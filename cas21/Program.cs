@@ -10,16 +10,45 @@ namespace cas21
     {
         static void Main(string[] args)
         {
-            int[] niz = new int[10];
-            double[] poeni = new double[2] { 43.332, 32.91 };
-
-            for(int i = 0; i < 10; i++)
-            {
-                niz[i] = i * 10;
-                Console.WriteLine("Vrijednost elementa niz[{0}]={1}", i, niz[i]);
-            }
+            ZadatakSumaListe();
             Console.ReadKey();
+            
+            
+
+            
         }
+        static void ZadatakSumaListe()
+        {
+            List<int> lista = new List<int>();
+            bool stayinloop = true;
+            string userentry;   
+            int i;
+            do
+            {
+                Console.WriteLine("Unesi broj sa tastature, za prekid ne unijeti nista");
+                userentry = Console.ReadLine();
+                if (string.IsNullOrEmpty(userentry))
+                {
+                    break;
+                }else
+                i = Convert.ToInt32(userentry);
+                lista.Add(i);
+                
+            } while (stayinloop);
+            Console.WriteLine("Sum of all numbers is {0}", SumaBrojeva(lista));
+         
+        }
+        static int SumaBrojeva(List<int> brojevi)
+        {
+            int sum = 0;
+            foreach(int i in brojevi)
+            {
+                sum = sum + i;
+            }
+            return sum;
+        }
+
+        
     }
     }
 
