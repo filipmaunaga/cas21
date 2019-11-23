@@ -10,7 +10,40 @@ namespace cas21
     {
         static void Main(string[] args)
         {
-            ZadatakSumaListe();
+            //Practise with null variable
+
+            int? num1 = null;
+            int? num2 = 50;
+            int? num3 = 0;
+
+            //simple
+            num3 = num1 ?? num2;
+
+            //regular
+            if (num1 == null)
+            {
+                num3 = num2;
+            }
+            else
+                num3 = num1;
+            //ternary operator
+            num3 = (num1 == null) ? num2 : num1;
+            string entry1, entry2;
+            //Advanced Calculator with empty strings as entries
+            Console.WriteLine("Enter the first value:");
+            entry1 = Console.ReadLine();
+            Console.WriteLine("Enter the second value:");
+            entry2 = Console.ReadLine();
+            Console.WriteLine("Enter the operation:");
+            string o = Console.ReadLine();
+
+            double m = string.IsNullOrEmpty(entry1) ? 2 : Convert.ToDouble(entry1);
+            double n = string.IsNullOrEmpty(entry2) ? 2 : Convert.ToDouble(entry2);
+            double result = AdvancedCalculator(m, n, o);
+            Console.WriteLine("Result is  {0} {1} {2} = {3}", m, o, n, result);
+            //ZadatakSumaListe();
+
+            Console.WriteLine("Sum of params array is {0}", SumWithParamsArray(1, 2, 3, 4, 5, 6));
             Console.ReadKey();
             
             
@@ -47,8 +80,36 @@ namespace cas21
             }
             return sum;
         }
+        static double AdvancedCalculator (double m, double n, string operation)
+        {
+            double result;
+            switch (operation)
+            {
+                case "+": result = m + n;
+                    break;
+                case "-": result = m - n;
+                    break;
+                case "*": result = m * n;
+                    break;
+                case "/": result = m / n;
+                    break;
+                default: result = 0;
+                    break;
 
-        
+
+            }
+            return result;
+        }
+
+        static int SumWithParamsArray(params int[] array)
+        {
+            int sum = 0;
+            foreach (int i in array)
+            {
+                sum = sum + i;
+            }
+            return sum;
+        }
     }
     }
 
